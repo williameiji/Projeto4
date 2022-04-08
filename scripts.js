@@ -3,12 +3,14 @@ let gifs = ["/Projeto_4_parrotsCardGame/imagens/bobrossparrot.gif", "/Projeto_4_
 let selecGifs = [];
 let dobroGifs = [];
 let contadorJogadas = 0;
+let contadorJogo = 0;
+let idInterval;
 
 
 quantasCartas();
 
 function quantasCartas(){
-    numCartas = prompt("Insira a quantidade de cartas entre 4 e 14 (números pares)");
+    numCartas = prompt("Insira a quantidade de cartas entre 4 e 14 (Deve ser números pares)");
     let numPar = Number(numCartas)%2;
 
     if(Number(numCartas) >= 4 && Number(numCartas) <= 14 && numPar === 0){
@@ -36,7 +38,7 @@ function embaralhar(){
 
 function adicionarCartas(){
     let cont = 0;
-    let divCartas = document.querySelector(".teste");
+    let divCartas = document.querySelector(".conteudoCartas");
     dobroGifs = dobroGifs.sort(embaralhar);
     while (cont < numCartas){
         divCartas.innerHTML = divCartas.innerHTML + 
@@ -57,53 +59,67 @@ function adicionarCartas(){
 function trocarCarta(teste){
     teste.classList.add("flip");
     contadorJogadas ++;
-    
+    chamarContador ();
     setTimeout(compararCartas, 2000);
 }
 
 
 function compararCartas(){
-    let x = document.querySelectorAll(".flip .cartaFrente img");
-    let z = document.querySelectorAll(".cartaFlip.flip");
+    let pegarImg = document.querySelectorAll(".flip .cartaFrente img");
+    let trocarFlip = document.querySelectorAll(".cartaFlip.flip");
         
-    if (x.length > 1){
-        let a = x[0].src;
-        let b = x[1].src;
+    if (pegarImg.length > 1){
+        let img1 = pegarImg[0].src;
+        let img2 = pegarImg[1].src;
         let i = 0;
 
-        if (a != b){
-            while(i < z.length) {
-                z[i].classList.remove("flip");
+        if (img1 != img2){
+            while(i < trocarFlip.length) {
+                trocarFlip[i].classList.remove("flip");
                 i++;
             }
             
         }else {
-            while(i < z.length) {
-            z[i].classList.add("flipOk");
-            z[i].classList.remove("flip");
+            while(i < trocarFlip.length) {
+               trocarFlip[i].classList.add("flipOk");
+            trocarFlip[i].classList.remove("flip");
             i++;
             jogoFinalizado();
             }
         }
     }   
-    x = [""];
-    z = [""];
+    pegarImg = [""];
+    trocarFlip = [""];
 }
 
 function jogoFinalizado () {
     let tudoCerto = document.querySelectorAll(".cartaFlip.flipOk");
     console.log(tudoCerto)
     if (tudoCerto.length == dobroGifs.length){
-        alert(`Você ganhou em ${contadorJogadas} jogadas!`);
-        reiniciarJogo ();
+        alert(`Você ganhou em ${contadorJogadas} jogadas e terminou com ${contadorJogo} segundos!`);
+        reiniciarJogo();
     }
 }
 
-
 function reiniciarJogo () {
-    let reiniciar = prompt("Deseja jogar novamente?(Digite 'sim' ou 'não'");
+    let reiniciar = prompt("Deseja jogar novamente?(Digite 'sim' ou 'não')");
     console.log(reiniciar)
     if (reiniciar == "sim"){
         location.reload();
+    }else if (reiniciar != "não"){
+        reiniciarJogo ();
+    }else{
+        clearInterval(idInterval);
     }
+}
+
+function chamarContador (){
+    if(contadorJogadas === 1){
+        idInterval = setInterval(Contador, 1000);
+    }
+}
+
+function Contador() {
+    contadorJogo++;
+    document.querySelector(".contador").innerHTML = contadorJogo;
 }

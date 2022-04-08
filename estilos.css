@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 body {
     background-color: #EEF9BF;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -21,14 +24,14 @@ body {
     margin: 40px 0 30px 0; 
 }
 
-.teste {
+.conteudoCartas {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
-.teste .cartas{
+.conteudoCartas .cartas{
     margin: 34px;
 }
 
@@ -39,10 +42,6 @@ body {
     justify-content: center;
     width: 117px;
     height: 146px;
-
-    /* teste flip */
-
-    
 }
 
 .cartaFlip {
@@ -63,7 +62,7 @@ body {
     transform-style: preserve-3d;
 }
 
-.cartaCostas, .cartaFrente, .cartaFrenteOk {
+.cartaCostas, .cartaFrente {
     position: absolute;
     display: flex;
     align-items: center;
@@ -73,13 +72,10 @@ body {
     border-radius: 5px;
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
-    /* margin = 34px */
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
 }
 
-
-/*.cartas:active .cartaFlip{*/
 .flip{
     transform: rotateY(180deg);
 }
@@ -88,33 +84,24 @@ body {
     transform: rotateY(180deg);
 }
 
-.cartaCostas img, .cartaFrente img, .cartaFrenteOk img {
+.cartaCostas img, .cartaFrente img {
     width: 100px;
     height: 100px;
 }
 
-.cartaFrente, .cartaFrenteOk {
-    
-    
+.cartaFrente {
     transform: rotateY(180deg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.caixaContador {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: lightseagreen;
+    padding: 20px;
+    border-radius: 0 0 0 5px;
+    text-align: center;
+  }
 
 @media only screen and (max-width: 600px) {
 
@@ -123,21 +110,25 @@ body {
         width: 100%;
     }
 
-    .cartas {
+    .conteudoCartas {
         display: block;
+        align-items: center;
+        justify-content: center;
     }
-
-    .cartaVirada {
+    
+    .conteudoCartas .cartas {
         margin: 34px auto;
     }
-
-    
-        
-    
 
     .topo {
         font-size: 36px;
         text-align: center;
     }
+
+    .caixaContador {
+        top: 50%;
+        border-radius: 5px 0 0 5px;
+    }
+
 
 }
