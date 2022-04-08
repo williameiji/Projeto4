@@ -95,6 +95,15 @@ function jogoFinalizado () {
     console.log(tudoCerto)
     if (tudoCerto.length == dobroGifs.length){
         alert(`Você ganhou em ${contadorJogadas} jogadas!`);
+        reiniciarJogo ();
     }
 }
 
+
+function reiniciarJogo () {
+    let reiniciar = prompt("Deseja jogar novamente?(Digite 'sim' ou 'não'");
+    console.log(reiniciar)
+    if (reiniciar == "sim"){
+        location.reload();
+    }
+}
