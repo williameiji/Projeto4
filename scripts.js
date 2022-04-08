@@ -1,10 +1,8 @@
 let numCartas;
-
 let gifs = ["/Projeto_4_parrotsCardGame/imagens/bobrossparrot.gif", "/Projeto_4_parrotsCardGame/imagens/explodyparrot.gif", "/Projeto_4_parrotsCardGame/imagens/fiestaparrot.gif", "/Projeto_4_parrotsCardGame/imagens/metalparrot.gif", "/Projeto_4_parrotsCardGame/imagens/revertitparrot.gif", "/Projeto_4_parrotsCardGame/imagens/tripletsparrot.gif", "/Projeto_4_parrotsCardGame/imagens/unicornparrot.gif"]
-
-
 let selecGifs = [];
 let dobroGifs = [];
+let contadorJogadas = 0;
 
 
 quantasCartas();
@@ -32,7 +30,6 @@ function selecionarCartas () {
     }
 }
 
-
 function embaralhar(){
     return Math.random() - 0.5;
 }
@@ -53,53 +50,51 @@ function adicionarCartas(){
                 </div>
             </div>
         </div>`
-    
-        cont++;
+    cont++;
     }
 }
 
 function trocarCarta(teste){
     teste.classList.add("flip");
-    setTimeout(compararCartas, 2000);
+    contadorJogadas ++;
     
+    setTimeout(compararCartas, 2000);
 }
 
 
 function compararCartas(){
     let x = document.querySelectorAll(".flip .cartaFrente img");
     let z = document.querySelectorAll(".cartaFlip.flip");
-    let y = document.querySelector(".cartaFlip .flip");
-
-    
+        
     if (x.length > 1){
         let a = x[0].src;
         let b = x[1].src;
-       
-
         let i = 0;
-        if (a != b){
 
-            
+        if (a != b){
             while(i < z.length) {
-                
-                z[i].classList.remove("flip")
-                //x = [""];
-                //z = [""];
+                z[i].classList.remove("flip");
                 i++;
             }
             
         }else {
             while(i < z.length) {
-            z[i].classList.add("flipOk")
-            z[i].classList.remove("flip")
+            z[i].classList.add("flipOk");
+            z[i].classList.remove("flip");
             i++;
+            jogoFinalizado();
+            }
         }
-        }
-
     }   
     x = [""];
-                z = [""];
-
-    console.log(x)
-    console.log(z)
+    z = [""];
 }
+
+function jogoFinalizado () {
+    let tudoCerto = document.querySelectorAll(".cartaFlip.flipOk");
+    console.log(tudoCerto)
+    if (tudoCerto.length == dobroGifs.length){
+        alert(`Você ganhou em ${contadorJogadas} jogadas!`);
+    }
+}
+
