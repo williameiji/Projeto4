@@ -52,9 +52,18 @@ body {
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-  }
+}
 
-.cartaCostas, .cartaFrente {
+.cartaFlipOK {
+    position: relative;
+    width: 117px;
+    height: 146px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.cartaCostas, .cartaFrente, .cartaFrenteOk {
     position: absolute;
     display: flex;
     align-items: center;
@@ -69,21 +78,26 @@ body {
     backface-visibility: hidden;
 }
 
+
 /*.cartas:active .cartaFlip{*/
 .flip{
     transform: rotateY(180deg);
 }
 
-.cartaCostas img, .cartaFrente img {
+.flipOk{
+    transform: rotateY(180deg);
+}
+
+.cartaCostas img, .cartaFrente img, .cartaFrenteOk img {
     width: 100px;
     height: 100px;
 }
 
-.cartaFrente {
+.cartaFrente, .cartaFrenteOk {
     
-    color: white;
+    
     transform: rotateY(180deg);
-  }
+}
 
 
 
