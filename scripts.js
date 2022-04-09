@@ -56,11 +56,22 @@ function adicionarCartas(){
     }
 }
 
-function trocarCarta(teste){
-    teste.classList.add("flip");
+function trocarCarta(addFlip){
+    addFlip.classList.add("flip");
     contadorJogadas ++;
     chamarContador ();
-    setTimeout(compararCartas, 2000);
+    let only2 = document.querySelectorAll(".flip");
+    
+    
+    if (only2.length === 2){
+    setTimeout(compararCartas, 1000);
+    }else if (only2.length >= 3){
+        let i = 0;
+        while(i < only2.length){
+        only2[i].classList.remove("flip");
+        i++;
+        }
+    }
 }
 
 
@@ -81,7 +92,7 @@ function compararCartas(){
             
         }else {
             while(i < trocarFlip.length) {
-               trocarFlip[i].classList.add("flipOk");
+            trocarFlip[i].classList.add("flipOk");
             trocarFlip[i].classList.remove("flip");
             i++;
             jogoFinalizado();
