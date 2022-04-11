@@ -53,15 +53,6 @@ body {
     transform-style: preserve-3d;
 }
 
-.cartaFlipOK {
-    position: relative;
-    width: 117px;
-    height: 146px;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
 .cartaCostas, .cartaFrente {
     position: absolute;
     display: flex;
@@ -128,6 +119,7 @@ body {
     .caixaContador {
         top: 50%;
         border-radius: 5px 0 0 5px;
+        padding: 5px;
     }
 
 
