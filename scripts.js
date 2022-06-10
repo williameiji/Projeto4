@@ -1,5 +1,5 @@
 let numCartas;
-let gifs = ["/Projeto_4_parrotsCardGame/imagens/bobrossparrot.gif", "/Projeto_4_parrotsCardGame/imagens/explodyparrot.gif", "/Projeto_4_parrotsCardGame/imagens/fiestaparrot.gif", "/Projeto_4_parrotsCardGame/imagens/metalparrot.gif", "/Projeto_4_parrotsCardGame/imagens/revertitparrot.gif", "/Projeto_4_parrotsCardGame/imagens/tripletsparrot.gif", "/Projeto_4_parrotsCardGame/imagens/unicornparrot.gif"]
+let gifs = ["./imagens/bobrossparrot.gif", "./imagens/explodyparrot.gif", "./imagens/fiestaparrot.gif", "./imagens/metalparrot.gif", "./imagens/revertitparrot.gif", "./imagens/tripletsparrot.gif", "./imagens/unicornparrot.gif"]
 let selecGifs = [];
 let dobroGifs = [];
 let contadorJogadas = 0;
@@ -48,7 +48,7 @@ function adicionarCartas(){
                     <img src="${dobroGifs[cont]}" >
                 </div>
                 <div class="cartaCostas" >
-                    <img src="/Projeto_4_parrotsCardGame/imagens/front.png">
+                    <img src="./imagens/front.png">
                 </div>
             </div>
         </div>`
