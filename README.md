@@ -25,5 +25,5 @@ Check project running [here](https://parrot-card-game-eight.vercel.app)
 
 **Cloning the Repository**
 ```
-$ git clone https://github.com/williameiji/bate-papo-uol.git
+$ git clone https://github.com/williameiji/parrot-card-game.git
 ```
