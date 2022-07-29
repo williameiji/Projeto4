@@ -1,11 +1,10 @@
 let numCartas;
-let gifs = ["/Projeto_4_parrotsCardGame/imagens/bobrossparrot.gif", "/Projeto_4_parrotsCardGame/imagens/explodyparrot.gif", "/Projeto_4_parrotsCardGame/imagens/fiestaparrot.gif", "/Projeto_4_parrotsCardGame/imagens/metalparrot.gif", "/Projeto_4_parrotsCardGame/imagens/revertitparrot.gif", "/Projeto_4_parrotsCardGame/imagens/tripletsparrot.gif", "/Projeto_4_parrotsCardGame/imagens/unicornparrot.gif"]
+let gifs = ["./assets/imagens/bobrossparrot.gif", "./assets/imagens/explodyparrot.gif", "./assets/imagens/fiestaparrot.gif", "./assets/imagens/metalparrot.gif", "./assets/imagens/revertitparrot.gif", "./assets/imagens/tripletsparrot.gif", "./assets/imagens/unicornparrot.gif"]
 let selecGifs = [];
 let dobroGifs = [];
 let contadorJogadas = 0;
 let contadorJogo = 0;
 let idInterval;
-
 
 quantasCartas();
 
@@ -16,7 +15,6 @@ function quantasCartas(){
     if(Number(numCartas) >= 4 && Number(numCartas) <= 14 && numPar === 0){
         selecionarCartas();
         adicionarCartas();
-        
     } else {
         alert("Por favor insira um número válido!");
         quantasCartas();
@@ -48,7 +46,7 @@ function adicionarCartas(){
                     <img src="${dobroGifs[cont]}" >
                 </div>
                 <div class="cartaCostas" >
-                    <img src="/Projeto_4_parrotsCardGame/imagens/front.png">
+                    <img src="./assets/imagens/front.png">
                 </div>
             </div>
         </div>`
@@ -62,9 +60,8 @@ function trocarCarta(addFlip){
     chamarContador ();
     let only2 = document.querySelectorAll(".flip");
     
-    
     if (only2.length === 2){
-    setTimeout(compararCartas, 1000);
+        setTimeout(compararCartas, 1000);
     }else if (only2.length >= 3){
         let i = 0;
         while(i < only2.length){
@@ -73,7 +70,6 @@ function trocarCarta(addFlip){
         }
     }
 }
-
 
 function compararCartas(){
     let pegarImg = document.querySelectorAll(".flip .cartaFrente img");
@@ -89,7 +85,6 @@ function compararCartas(){
                 trocarFlip[i].classList.remove("flip");
                 i++;
             }
-            
         }else {
             while(i < trocarFlip.length) {
             trocarFlip[i].classList.add("flipOk");
@@ -105,7 +100,6 @@ function compararCartas(){
 
 function jogoFinalizado () {
     let tudoCerto = document.querySelectorAll(".cartaFlip.flipOk");
-    console.log(tudoCerto)
     if (tudoCerto.length == dobroGifs.length){
         alert(`Você ganhou em ${contadorJogadas} jogadas e terminou com ${contadorJogo} segundos!`);
         reiniciarJogo();
@@ -114,7 +108,6 @@ function jogoFinalizado () {
 
 function reiniciarJogo () {
     let reiniciar = prompt("Deseja jogar novamente?(Digite 'sim' ou 'não')");
-    console.log(reiniciar)
     if (reiniciar == "sim"){
         location.reload();
     }else if (reiniciar != "não"){
